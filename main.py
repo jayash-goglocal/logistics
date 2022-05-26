@@ -21,3 +21,6 @@ from data.shiprocket import add
 from data.dtdc import add
 from data.bluedart import add
 from data.shiprocket import add
+from data.aramex import insert_data
+from data.bluedart import insert_data
+from data.dtdc import insert_data

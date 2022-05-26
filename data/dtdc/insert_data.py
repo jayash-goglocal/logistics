@@ -21,11 +21,13 @@ for rows in file.itertuples():
         zone_country_relation[rows[2]] = []
     zone_country_relation[rows[2]].append(rows[1])
 
-df = pd.read_csv("/home/jayash/Desktop/Goglocal/Logistics/data/bluedart/bluedart.csv")
+df = pd.read_csv("/home/jayash/Desktop/Goglocal/Logistics/data/dtdc/final.csv")
 
 
-cursor.execute("SELECT * FROM logistic_partners WHERE name = %s", ("Bluedart",))
+cursor.execute("SELECT * FROM logistic_partners WHERE name = %s", ("DTDC",))
 logistic_partner_id = cursor.fetchone()[0]
+
+
 
 
 weights = []
@@ -45,10 +47,10 @@ for rows in df.itertuples():
     
     count+=1
     
-    for i in range(1, 12):
-        countries = zone_country_relation[i]
-        for country in countries:
-            cost = remove_comma(str(rows[i+2]))
-            cursor.execute(
-                "INSERT INTO logistics (country, price, weight_upper_range, weight_lower_range, partner_id) VALUES (%s, %s, %s, %s, %s)", (country, cost, weight_upper_range, weight_lower_range, logistic_partner_id))
+
+    for i in range(len(df.columns)):
+        country = df.columns[i]
+        cost = remove_comma(str(rows[i+1]))
+        cursor.execute(
+            "INSERT INTO logistics (country, price, weight_upper_range, weight_lower_range, partner_id) VALUES (%s, %s, %s, %s, %s)", (country, cost, weight_upper_range, weight_lower_range, logistic_partner_id))
 

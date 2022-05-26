@@ -1,3 +1,7 @@
+def remove_comma(s):
+    return float(s.replace(',', ''))
+
+
 import pandas as pd
 
 import psycopg2
@@ -26,20 +30,25 @@ logistic_partner_id = cursor.fetchone()[0]
 
 weights = []
 
-for rows in df:
+for rows in df.itertuples():
     weights.append(rows[1])
 
 count = 1
 
-for rows in df:
+for rows in df.itertuples():
     weight_lower_range = rows[1]
-    weight_upper_range = weights[count]
+
+    try:
+        weight_upper_range = weights[count]
+    except:
+        weight_upper_range = 10000
+    
     count+=1
     
     for i in range(1, 14):
         countries = zone_country_relation[i]
         for country in countries:
-            cost = rows[i+1]
+            cost = remove_comma(str(rows[i+1]))
             cursor.execute(
                 "INSERT INTO logistics (country, price, weight_upper_range, weight_lower_range, partner_id) VALUES (%s, %s, %s, %s, %s)", (country, cost, weight_upper_range, weight_lower_range, logistic_partner_id))
 
