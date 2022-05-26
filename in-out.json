@@ -1,0 +1,44 @@
+{
+    "items" : [
+        {
+            "description" : "Man's Tshirt",
+            "imageUrl" : null,
+            "quantity" : 3,
+            "unitPrice" : 100,
+            "currency" : "USD",
+            "itemCatagory" : "Cloths",
+            "boxCount" : 4,
+            "height" : 10,
+            "width" : 10,
+            "length" : 10,
+            "weight" : 10,
+            "descriptionLong" : "This is a long description of the item",
+            "fabricContent" : "Cotton",
+            "color" : "Red",
+            "material" : "Cotton",
+            "hscode" : null
+        }
+    ]
+}
+
+
+
+{
+    "shipping_partners" : [
+        {
+            "name" : "FedEx",
+            "shipping_cost" : 100,
+            "shipping_time" : "2-3 days"
+        },
+        {
+            "name" : "UPS",
+            "shipping_cost" : 200,
+            "shipping_time" : "2-3 days"
+        }
+    ],
+    "tax_details" : {
+        "custom_duty" : 20,
+        "VAT" : 10,
+        "sales_tax" : 10
+    }
+}
