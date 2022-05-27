@@ -11,7 +11,7 @@ conn.autocommit = True
 cursor = conn.cursor()
 
 
-file = pd.read_csv("/home/jayash/Desktop/Goglocal/Logistics/data/aramex/zones.csv")
+file = pd.read_csv("~/Desktop/Goglocal/Logistics/data/aramex/zones.csv")
 
 zone_country_relation = {}
 
@@ -21,7 +21,7 @@ for rows in file.itertuples():
         zone_country_relation[rows[2]] = []
     zone_country_relation[rows[2]].append(rows[1])
 
-df = pd.read_csv("/home/jayash/Desktop/Goglocal/Logistics/data/bluedart/bluedart.csv")
+df = pd.read_csv("~/Desktop/Goglocal/Logistics/data/bluedart/bluedart.csv")
 
 
 cursor.execute("SELECT * FROM logistic_partners WHERE name = %s", ("Bluedart",))

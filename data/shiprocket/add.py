@@ -14,7 +14,7 @@ countries = []
 
 import pandas as pd
 
-file = pd.read_csv("/home/jayash/Desktop/Goglocal/Logistics/data/aramex/zones.csv")
+file = pd.read_csv("~/Desktop/Goglocal/Logistics/data/aramex/zones.csv")
 
 for rows in file.itertuples():
     country = rows[1]
