@@ -50,6 +50,8 @@ for rows in df.itertuples():
 
     for i in range(len(df.columns)):
         country = df.columns[i]
+        if country.lower() == "weight":
+            continue 
         cost = remove_comma(str(rows[i+1]))
         cursor.execute(
             "INSERT INTO logistics (country, price, weight_upper_range, weight_lower_range, partner_id) VALUES (%s, %s, %s, %s, %s)", (country, cost, weight_upper_range, weight_lower_range, logistic_partner_id))

@@ -48,6 +48,8 @@ for rows in df.itertuples():
     for i in range(1, 12):
         countries = zone_country_relation[i]
         for country in countries:
+            if country.lower() == "weight":
+                continue 
             cost = remove_comma(str(rows[i+2]))
             cursor.execute(
                 "INSERT INTO logistics (country, price, weight_upper_range, weight_lower_range, partner_id) VALUES (%s, %s, %s, %s, %s)", (country, cost, weight_upper_range, weight_lower_range, logistic_partner_id))
